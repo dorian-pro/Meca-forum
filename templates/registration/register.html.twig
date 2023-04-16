@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Méca-forum - Inscription{% endblock %}
+    {% block body %}
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        <div class="container_form">
+            {{ form_start(form) }}
+            <h1>Inscription</h1>
+
+            <div class="form">
+                <div class="group_form">
+                    <div class="group_label">
+                        {{ form_label(form.userInfo.lastname, 'Nom', {
+                            'attr': {
+                                'class': 'form_label'
+                            }
+                        }) }}
+                        {{ form_widget(form.userInfo.lastname, {
+                            'attr': {
+                                'class': 'group-form'
+                            }
+                        }) }}
+                    </div>
+
+                    <div class="group_label">
+                        {{ form_label(form.userInfo.firstname, 'Prénom', {
+                            'attr': {
+                                'class': 'form_label'
+                            }
+                        }) }}
+                        {{ form_widget(form.userInfo.firstname, {
+                            'attr': {
+                                'class': 'group-form'
+                            }
+                        }) }}
+                    </div>
+                </div>
+
+                <div class="group_form">
+                    <div class="group_label">
+                        {{ form_label(form.userInfo.phone, 'Téléphone', {
+                            'attr': {
+                                'class': 'form_label'
+                            }
+                        }) }}
+                        {{ form_widget(form.userInfo.phone, {
+                            'attr': {
+                                'class': 'group-form'
+                            }
+                        }) }}
+                    </div>
+                </div>
+                    <div class="group_form">
+                        <div class="group_label">
+                            {{ form_label(form.userInfo.pseudo, 'Pseudo', {
+                                'attr': {
+                                    'class': 'form_label'
+                                }
+                            }) }}
+                            {{ form_widget(form.userInfo.pseudo, {
+                                'attr': {
+                                    'class': 'group-form'
+
+                                }
+                            }) }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="group_form email">
+                    {{ form_label(form.email, 'Email', {
+                        'attr': {
+                            'class': 'form_label'
+                        }
+                    }) }}
+                    {{ form_widget(form.email) }}
+                </div>
+
+                {{ form_widget(form.password, {
+                    'attr': {
+                        'class': 'group_form',
+                    }})
+                }}
+{#                    <div class="passionate">#}
+{#                        {{ form_widget(form.passionate) }}#}
+{#                    </div>#}
+
+
+                <div class="group_form">
+                    <div class="group_label">
+                        {{ form_label(form.address.country, 'Pays', {
+                            'attr': {
+                                'class': 'form_label'
+                            }
+                        }) }}
+                        {{ form_widget(form.address.country, {
+                            'attr': {
+                                'class': 'group-form'
+                            }
+                        }) }}
+                    </div>
+                    <div class="group_label">
+                        {{ form_label(form.address.city, 'Ville', {
+                            'attr': {
+                                'class': 'form_label'
+                            }
+                        }) }}
+                        {{ form_widget(form.address.city, {
+                            'attr': {
+                                'class': 'form_label'
+                            }
+                        }) }}
+                    </div>
+                    <div class="group_label">
+                        {{ form_label(form.address.postalCode, 'Code postal', {
+                            'attr': {
+                                'class': 'form_label'
+                            }
+                        }) }}
+                        {{ form_widget(form.address.postalCode, {
+                            'attr': {
+                                'class': 'group-form'
+                            }
+                        }) }}
+                    </div>
+
+                </div>
+                <div class="group_btn">
+                    <button class="btn" type="submit" id="registration_register" name="registration[register]">S'inscrire<i></i></button>
+                    <p class="connect">Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Connectez vous !</a></p>
+                </div>
+                <div class="remember">
+                    <label class="check">
+                        <input class="input_check" type="checkbox" name="_remember_me">
+                        Réster connecter
+                    </label>
+                </div>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    {% endblock %}
+

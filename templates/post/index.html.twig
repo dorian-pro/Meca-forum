@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Méca-forum - Touts les postes{% endblock %}
+
+{% block body %}
+<div class="container_post">
+    <section class="container_sidebar">
+        <h1>sidebar</h1>
+    </section>
+    <section class="contaiter_card_post">
+        <ul class="card_group">
+            {% for post in posts %}
+                <li>
+                    <div class="card_post">
+                        <div class="card_header">
+
+                                {% if post.userPost.profilePicture is not null %}
+                                    {% for image in images %}
+                                        {% if image.id == post.userPost.profilePicture.id %}
+                                            <div class="user_profile">
+                                                <img src="{{ image.imageProfile }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
+                                                {{ post.userPost.userInfo.pseudo  }}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <i class="fa-solid fa-user"></i> {{ post.userPost.userInfo.pseudo  }}
+                                {% endif %}
+
+                        </div>
+                        <div class="card_body">
+                            {% if post.image|length > 1 %}
+                                <ul class="slice">
+                                    {% for image in post.image %}
+                                        <li>
+                                            <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <div class="img">
+                                    {% for image in post.image %}
+                                        <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="card_footer">
+                            <span class="h3">
+                                {{ post.title }}
+                            </span>
+                            <p class="description">
+                                {{ post.description }}
+                            </p>
+                            <div class="comment">
+                                {{ form_start(form) }}
+
+                                <div>
+                                    {{ form_label(form.comment) }}
+                                    {{ form_widget(form.comment) }}
+                                </div>
+                                <div class="form-error">
+                                    {{ form_errors(form.comment) }}
+                                </div>
+
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section class="container_aside">
+        <h1>aside</h1>
+    </section>
+</div>
+
+
+
+{% endblock %}

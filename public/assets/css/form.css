@@ -1,0 +1,142 @@
+.container_form{
+    height: 90.3vh;
+    width: 100%;
+    background-image: url("/assets/img/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container_form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(245, 245, 245, 0.49);
+    max-width: 800px;
+    height: 100%;
+    border-right: 1px solid var(--couleur-accent-fonce);
+    border-left: 1px solid var(--couleur-accent-fonce);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    filter: blur(80%);
+    position: relative;
+    box-shadow: inset 0 0 10px #191970;
+}
+
+.container_form form h1{
+    position: absolute;
+    top: 60px;
+    font-size: 45px;
+    color: var(--couleur-accent-clair);
+    text-transform: uppercase;
+    left: 30px;
+}
+
+.container_form .form{
+    margin-top: 50px;
+}
+
+.group_form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.group_form.email{
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.group_form > div{
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+}
+
+.group_form > div:focus-within label,
+.group_form.email:focus-within label,
+.group_label:focus-within label{
+    top: -25px;
+    background: none;
+    transition: 300ms ease;
+    transform: scale(100%);
+}
+
+.container_form input:not(.input_check) {
+    border-bottom: 1px solid var(--couleur-accent-fonce);
+    width: 100%;
+    cursor: text;
+    height: 30px;
+}
+
+.container_form input{
+    accent-color: #191970;
+}
+
+.group_label{
+    position: relative;
+    width: 100%;
+    display: flex;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.container_form label:not(label.check, .passionate label){
+    position: absolute;
+    top: -1px;
+    bottom: 1px;
+    left: -5px;
+    font-size: 14px;
+    color: #191970;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    transform: scale(100%);
+    transition:  300ms ease;
+}
+
+.group_btn p a{
+    color: #191970;
+}
+
+.passionate{
+    width: 100%;
+    display: flex;
+    position: relative;
+    height: 60px;
+}
+
+.passionate label{
+    color: var(--couleur-accent-clair);
+}
+
+.remember .check{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--couleur-texte-secondaire);
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.input_check{
+    width: inherit;
+    accent-color: var(--couleur-accent-fonce);
+}
+
+.group_form.password > div{
+    width: 100%;
+}
+
+.container_form div{
+    display: block;
+}
+

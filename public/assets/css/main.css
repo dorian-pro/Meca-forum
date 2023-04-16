@@ -1,0 +1,263 @@
+:root {
+    /* Couleurs principales */
+    --couleur-fond: #f5f5f5; /* blanc cassé */
+    --couleur-header: #455a64; /* bleu-gris */
+    --couleur-texte-principal: #212121; /* gris foncé */
+
+    /* Couleurs de texte */
+    --couleur-texte-secondaire: #cccccc; /* gris acier */
+    --couleur-text-black: #000;
+    /* Couleurs d'accent */
+    --couleur-accent-fonce: #1e88e5; /* bleu foncé */
+    --couleur-accent-clair: #e3f2fd; /* bleu clair */
+    --couleur-accent-sombre: #bf360c; /* rouge foncé */
+}
+
+/* CSS pour les polices de caractères */
+
+/* EBGaramond */
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/assets/fonts/EBGaramond-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/assets/fontsEBGaramond-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/assets/fonts/EBGaramond-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* InriaSerif */
+@font-face {
+    font-family: 'Inria Serif';
+    src: url('/assets/fonts/InriaSerif-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inria Serif';
+    src: url('/assets/fonts/InriaSerif-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Merriweather Sans */
+@font-face {
+    font-family: 'Merriweather Sans';
+    src: url('/assets/fonts/MerriweatherSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather Sans';
+    src: url('/assets/fonts/MerriweatherSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather Sans';
+    src: url('/assets/fonts/MerriweatherSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* CSS pour le contenu de la page */
+
+h1, h2, h3 {
+    font-family: 'EB Garamond', serif;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+h2, h3 {
+    font-weight: normal;
+}
+
+p, li, button, a {
+    font-family: 'Inria Serif', serif;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.semibold {
+    font-weight: 600;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+/* Utilisation des variables de couleurs */
+body {
+    background-color: var(--couleur-fond);
+    letter-spacing: 1.3px;
+    font-family: 'Merriweather Sans', sans-serif;
+    height: 100vh;
+}
+div{
+    display: block;
+}
+
+header {
+    background-color: var(--couleur-fond);
+    color: var(--couleur-text-black);
+    border-bottom: 1px solid var(--couleur-accent-fonce);
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--couleur-texte-principal);
+}
+
+p, a, li {
+    color: var(--couleur-texte-secondaire);
+}
+
+/* Couleur d'accent pour les boutons, les liens et les icônes */
+button, a, .icone {
+    color: var(--couleur-text-black);
+    border-color: var(--couleur-accent-fonce);
+}
+
+
+/* Couleur d'accent foncé pour les éléments importants */
+.bouton-important, .section-importante {
+    background-color: var(--couleur-accent-fonce);
+    color: var(--couleur-texte-principal);
+}
+
+/*------------ button primary -------------*/
+
+.group_btn{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    position: relative;
+    color: var(--couleur-texte-secondaire);
+    text-transform: uppercase;
+    border: 1px solid var(--couleur-accent-clair);
+    letter-spacing: 0.1rem;
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    transition: 0.3s;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    letter-spacing: 0.2rem;
+    color: var(--couleur-texte-secondaire);
+    box-shadow: 0 0 35px var(--couleur-accent-clair);
+    animation: box 3s infinite;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+}
+
+.btn span {
+    position: relative;
+    z-index: 1;
+}
+.btn i {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.btn i::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    left: 80%;
+    top: -3px;
+    border: 2px solid var(--couleur-accent-fonce);
+    transition: 0.2s;
+}
+
+.btn:hover i::before {
+    width: 15px;
+    left: 20%;
+    animation: move 3s infinite;
+}
+
+.btn i::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    left: 20%;
+    bottom: -3px;
+    border: 2px solid var(--couleur-accent-fonce);
+    transition: 0.2s;
+}
+
+.btn:hover i::after {
+    width: 15px;
+    left: 80%;
+    animation: move 3s infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes box {
+    0% {
+        box-shadow: #27272c;
+    }
+    50% {
+        box-shadow: 0 0 25px var(--couleur-accent-fonce);
+    }
+    100% {
+        box-shadow: #27272c;
+    }
+}
+
+
+

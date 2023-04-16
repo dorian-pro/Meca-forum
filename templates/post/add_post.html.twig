@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}Méca-forum - Poser une question{% endblock %}
+    {% block body %}
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.vehicle) }}
+        {{ form_row(form.submit) }}
+
+        {{ form_end(form) }}
+    {% endblock %}

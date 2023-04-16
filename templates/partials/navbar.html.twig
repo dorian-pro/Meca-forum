@@ -1,0 +1,54 @@
+<nav>
+    <a href="/" class="navbar_brand">
+        <img src="/assets/img/logoTransparent.svg" alt="Retour a la page d'accueil">
+    </a>
+
+    <ul class="navbar_nav">
+        <li class="nav_item">
+            <a href="/" class="menu_item semibold">Accueil</a>
+        </li>
+        <li class="nav_item">
+            <button type="button" id="dropdown_category" class="btn_navbar semibold">Catégories</button>
+            <ul class="dropdown_menu category" id="dropdown_menu_category">
+                {% for nav in ListVehicle() %}
+                    <li><a class="dropdown_item semibold" href="/category/{{ nav.slug }}">{{ nav.vehicle }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="nav_item semibold">
+            <a href="#">Annonces</a>
+        </li>
+        <li class="nav_item semibold">
+            <a href="#">Contact</a>
+        </li>
+        <li class="nav_item icon">
+            {% if app.user %}
+                <button class="btn_profile" id="dropdown_profile">{{ app.user.userInfo.pseudo }}<i class="fa-solid fa-circle-user"></i></button>
+                <ul class="dropdown_menu profile" id="dropdown_menu_profile">
+                    <li class="semibold nav_item">
+                        <a href="/profile">Mon compte</a>
+                    </li>
+                    <li class="semibold nav_item">
+                        <a href="/logout">Déconnexion</a>
+                    </li>
+                </ul>
+            {% else %}
+                <button class="btn_profile" id="dropdown_profile"><i class="fa-solid fa-circle-user"></i></button>
+                <ul class="dropdown_menu logout" id="dropdown_menu_profile">
+                    <li class="semibold nav_item">
+                        <a href="/login">Connexion</a>
+                    </li>
+                    <li class="semibold nav_item">
+                        <a href="/register">Inscription</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </li>
+        <li class="btn_mobil mobil_icon">
+            <button type="button">
+                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </li>
+    </ul>
+</nav>
