@@ -12,6 +12,7 @@ class PassionateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Ajout du champ "passionate" avec des options pour les choix possibles
         $builder
             ->add('passionate', ChoiceType::class, [
                 'choices' => [
@@ -27,6 +28,7 @@ class PassionateType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
+        // Configuration des options par défaut du formulaire
         $resolver->setDefaults([
             'data_class' => Passionate::class,
         ]);

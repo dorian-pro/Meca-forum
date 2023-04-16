@@ -13,6 +13,7 @@
             <div class="form">
                 <div class="group_form">
                     <div class="group_label">
+                        <!-- Champ pour le nom -->
                         {{ form_label(form.userInfo.lastname, 'Nom', {
                             'attr': {
                                 'class': 'form_label'
@@ -26,6 +27,7 @@
                     </div>
 
                     <div class="group_label">
+                        <!-- Champ pour le prénom -->
                         {{ form_label(form.userInfo.firstname, 'Prénom', {
                             'attr': {
                                 'class': 'form_label'
@@ -41,6 +43,7 @@
 
                 <div class="group_form">
                     <div class="group_label">
+                        <!-- Champ pour le téléphone -->
                         {{ form_label(form.userInfo.phone, 'Téléphone', {
                             'attr': {
                                 'class': 'form_label'
@@ -53,25 +56,25 @@
                         }) }}
                     </div>
                 </div>
-                    <div class="group_form">
-                        <div class="group_label">
-                            {{ form_label(form.userInfo.pseudo, 'Pseudo', {
-                                'attr': {
-                                    'class': 'form_label'
-                                }
-                            }) }}
-                            {{ form_widget(form.userInfo.pseudo, {
-                                'attr': {
-                                    'class': 'group-form'
 
-                                }
-                            }) }}
-                        </div>
+                <div class="group_form">
+                    <div class="group_label">
+                        <!-- Champ pour le pseudo -->
+                        {{ form_label(form.userInfo.pseudo, 'Pseudo', {
+                            'attr': {
+                                'class': 'form_label'
+                            }
+                        }) }}
+                        {{ form_widget(form.userInfo.pseudo, {
+                            'attr': {
+                                'class': 'group-form'
+                            }
+                        }) }}
                     </div>
-
                 </div>
 
                 <div class="group_form email">
+                    <!-- Champ pour l'adresse e-mail -->
                     {{ form_label(form.email, 'Email', {
                         'attr': {
                             'class': 'form_label'
@@ -85,13 +88,15 @@
                         'class': 'group_form',
                     }})
                 }}
-{#                    <div class="passionate">#}
-{#                        {{ form_widget(form.passionate) }}#}
-{#                    </div>#}
-
+                {#
+                <div class="passionate">
+                    {{ form_widget(form.passionate) }}
+                </div>
+                #}
 
                 <div class="group_form">
                     <div class="group_label">
+                        <!-- Champ pour le pays -->
                         {{ form_label(form.address.country, 'Pays', {
                             'attr': {
                                 'class': 'form_label'
@@ -104,6 +109,7 @@
                         }) }}
                     </div>
                     <div class="group_label">
+                        <!-- Champ pour la ville -->
                         {{ form_label(form.address.city, 'Ville', {
                             'attr': {
                                 'class': 'form_label'
@@ -116,6 +122,7 @@
                         }) }}
                     </div>
                     <div class="group_label">
+                        <!-- Champ pour le code postal -->
                         {{ form_label(form.address.postalCode, 'Code postal', {
                             'attr': {
                                 'class': 'form_label'

@@ -14,6 +14,7 @@ class CommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // Ajout du champ "comment" pour le commentaire général
         $builder
             ->add('comment', TextareaType::class, [
                 'label' => false,
@@ -22,6 +23,8 @@ class CommentType extends AbstractType
                     'class' => 'form-control'
                 ]
             ]);
+
+        // Ajout d'un champ "comment_" pour chaque post spécifié dans les options
         foreach ($options['posts'] as $post) {
             $builder->add('comment_' . $post['id'], TextareaType::class, [
                 'label' => false,
@@ -35,6 +38,7 @@ class CommentType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        // Définition des options par défaut, dont la liste des posts passée en paramètre
         $resolver->setDefaults([
             'data_class' => Comment::class,
             'posts' => []

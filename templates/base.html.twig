@@ -6,6 +6,7 @@
         <link rel="icon" href="assets/img/favicon.png">
 
         {% block stylesheets %}
+            <!-- Chargement des fichiers CSS -->
             {{ encore_entry_link_tags('app') }}
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
             <link rel="stylesheet" type="text/css" href="{{ asset('assets/slick-1.8.1/slick/slick.css') }}"/>
@@ -20,16 +21,19 @@
         {% endblock %}
     </head>
     <body id="body">
+        <!-- Header de la page -->
         <header>
             {% include '/partials/navbar.html.twig' %}
         </header>
         <main>
+            <!-- Corps de la page -->
             {% block body %}{% endblock %}
         </main>
         <footer>
             {# TODO FAIRE LE FOOTER #}
         </footer>
         {% block javascripts %}
+            <!-- Chargement des fichiers JavaScript -->
             {{ encore_entry_script_tags('app') }}
             <script src="{{ asset('assets/js/dropdown.js') }}"></script>
             <script src="https://kit.fontawesome.com/63367d301d.js" crossorigin="anonymous"></script>

@@ -6,6 +6,7 @@
     <div class="container_form">
         <form method="post">
             {% if error %}
+                <!-- Afficher un message d'erreur en cas d'erreur lors de la connexion -->
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
 
@@ -13,26 +14,31 @@
             <div class="form">
                 <div class="group_form email">
                     <label for="inputEmail">Email</label>
+                    <!-- Champ de saisie pour l'adresse email -->
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="off" required>
                 </div>
                 <div class="group_form password">
                     <div>
                         <label for="inputPassword">Mot de passe</label>
+                        <!-- Champ de saisie pour le mot de passe -->
                         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="off" required>
                     </div>
                 </div>
 
                 <div class="group_btn">
+                    <!-- Bouton pour soumettre le formulaire de connexion -->
                     <button class="btn" type="submit" id="registration_register" name="registration[register]">Connexion<i></i></button>
                     <p class="connect">Vous n'avez pas de compte ? <a href="{{ path('app_login') }}">Inscrivez vous !</a></p>
                 </div>
                 <div class="remember">
                     <label class="check">
+                        <!-- Case à cocher pour se souvenir de la connexion -->
                         <input class="input_check" type="checkbox" name="_remember_me">
                         Réster connecter
                     </label>
                 </div>
             </div>
+            <!-- Champ caché contenant le jeton CSRF pour la sécurité -->
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
             >

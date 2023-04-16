@@ -1,29 +1,41 @@
 <nav>
+    <!-- Logo et lien vers la page d'accueil -->
     <a href="/" class="navbar_brand">
         <img src="/assets/img/logoTransparent.svg" alt="Retour a la page d'accueil">
     </a>
 
+    <!-- Liste des éléments de navigation -->
     <ul class="navbar_nav">
+        <!-- Élément "Accueil" -->
         <li class="nav_item">
             <a href="/" class="menu_item semibold">Accueil</a>
         </li>
+        <!-- Élément "Catégories" -->
         <li class="nav_item">
+            <!-- Bouton déroulant "Catégories" -->
             <button type="button" id="dropdown_category" class="btn_navbar semibold">Catégories</button>
+            <!-- Liste déroulante des catégories -->
             <ul class="dropdown_menu category" id="dropdown_menu_category">
                 {% for nav in ListVehicle() %}
+                    <!-- Élément de catégorie -->
                     <li><a class="dropdown_item semibold" href="/category/{{ nav.slug }}">{{ nav.vehicle }}</a></li>
                 {% endfor %}
             </ul>
         </li>
+        <!-- Élément "Annonces" -->
         <li class="nav_item semibold">
             <a href="#">Annonces</a>
         </li>
+        <!-- Élément "Contact" -->
         <li class="nav_item semibold">
             <a href="#">Contact</a>
         </li>
+        <!-- Élément de profil utilisateur -->
         <li class="nav_item icon">
             {% if app.user %}
+                <!-- Bouton de profil pour un utilisateur connecté -->
                 <button class="btn_profile" id="dropdown_profile">{{ app.user.userInfo.pseudo }}<i class="fa-solid fa-circle-user"></i></button>
+                <!-- Menu déroulant du profil utilisateur -->
                 <ul class="dropdown_menu profile" id="dropdown_menu_profile">
                     <li class="semibold nav_item">
                         <a href="/profile">Mon compte</a>
@@ -33,7 +45,9 @@
                     </li>
                 </ul>
             {% else %}
+                <!-- Bouton de profil pour un utilisateur non connecté -->
                 <button class="btn_profile" id="dropdown_profile"><i class="fa-solid fa-circle-user"></i></button>
+                <!-- Menu déroulant de connexion/d'inscription -->
                 <ul class="dropdown_menu logout" id="dropdown_menu_profile">
                     <li class="semibold nav_item">
                         <a href="/login">Connexion</a>
@@ -44,6 +58,7 @@
                 </ul>
             {% endif %}
         </li>
+        <!-- Bouton pour la version mobile -->
         <li class="btn_mobil mobil_icon">
             <button type="button">
                 <i class="fa-solid fa-bars"></i>

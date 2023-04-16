@@ -1,17 +1,26 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}Méca-forum - Poser une question{% endblock %}
-    {% block body %}
-        {% for flash_error in app.flashes('verify_email_error') %}
-            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-        {% endfor %}
+{% block title %}Méca-forum - Poser une question{% endblock %}
 
-        {{ form_start(form) }}
+{% block body %}
 
-        {{ form_row(form.title) }}
-        {{ form_row(form.description) }}
-        {{ form_row(form.vehicle) }}
-        {{ form_row(form.submit) }}
+    {# Affiche un message d'erreur si la vérification d'email a échoué #}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
 
-        {{ form_end(form) }}
-    {% endblock %}
+    {# Affiche le formulaire pour ajouté un post #}
+    {{ form_start(form) }}
+
+    {# Affiche le champ pour le titre #}
+    {{ form_row(form.title) }}
+    {# Affiche le champ pour la description #}
+    {{ form_row(form.description) }}
+    {# Affiche le champ pour le type de catégorie au quel la question est dédié #}
+    {{ form_row(form.vehicle) }}
+    {# Affiche le bouton pour soumettre le formulaire #}
+    {{ form_row(form.submit) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

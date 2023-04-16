@@ -11,6 +11,7 @@ class UserInfoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Ajout des champs pour le formulaire d'inscription
         $builder
             ->add('lastname')
             ->add('firstname')
@@ -21,6 +22,7 @@ class UserInfoType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
+        // Définition de l'entité liée au formulaire
         $resolver->setDefaults([
             'data_class' => UserInfo::class,
         ]);

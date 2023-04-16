@@ -21,6 +21,12 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    /**
+     * Enregistre l'entité et, éventuellement, flush les changements dans la base de données.
+     *
+     * @param Post $entity L'entité a enregistré
+     * @param bool $flush Indique si les changements doivent être flush dans la base de données (par défaut: false).
+     */
     public function save(Post $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -30,6 +36,12 @@ class PostRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Supprime l'entité et, éventuellement, flush les changements dans la base de données.
+     *
+     * @param Post $entity L'entité a supprimé
+     * @param bool $flush Indique si les changements doivent être flush dans la base de données (par défaut: false).
+     */
     public function remove(Post $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -39,52 +51,37 @@ class PostRepository extends ServiceEntityRepository
         }
     }
 
-    public function findAllWithImages()
+    /**
+     * Trouve tous les articles avec les images associées.
+     *
+     * @return Post[] Un tableau d'entités Post.
+     */
+    public function findAllWithImages(): array
     {
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
             'SELECT p, m
-        FROM App\Entity\Post p
-        LEFT JOIN p.image m'
+            FROM App\Entity\Post p
+            LEFT JOIN p.image m'
         );
 
         return $query->getResult();
     }
 
-    public function findCommentByLimit()
+    /**
+     * Trouve tous les articles avec les commentaires associés limités par la limite spécifiée.
+     *
+     * @return Post[] Un tableau d'entités Post.
+     */
+    public function findCommentByLimit(): array
     {
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
             'SELECT p, c
-        FROM App\Entity\Post p
-        LEFT JOIN p.comments c'
+            FROM App\Entity\Post p
+            LEFT JOIN p.comments c'
         );
 
         return $query->getResult();
     }
-
-//    /**
-//     * @return Post[] Returns an array of Post objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Post
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

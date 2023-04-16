@@ -1,23 +1,27 @@
-nav{
+/* Styles pour la barre de navigation */
+nav {
     display: flex;
     align-items: center;
     padding-left: 12px;
     padding-right: 12px;
-    box-shadow:  0 1px 10px rgba(33, 33, 33, 0.47);
+    box-shadow: 0 1px 10px rgba(33, 33, 33, 0.47);
 }
 
-nav .navbar_brand{
+/* Styles pour le logo de la barre de navigation */
+nav .navbar_brand {
     display: flex;
     align-items: center;
     height: 95px;
 }
 
-nav .navbar_brand img{
+/* Styles pour l'image du logo de la barre de navigation */
+nav .navbar_brand img {
     height: 100%;
     width: 120px;
 }
 
-nav .navbar_nav{
+/* Styles pour la navigation principale de la barre de navigation */
+nav .navbar_nav {
     display: flex;
     align-items: center;
     width: calc(100% - 120px);
@@ -27,12 +31,14 @@ nav .navbar_nav{
     position: relative;
 }
 
-nav .nav_item{
+/* Styles pour les éléments de navigation de la barre de navigation */
+nav .nav_item {
     margin: 15px;
     position: relative;
 }
 
-nav .nav_item a:not(.nav_item.icon a):before{
+/* Styles pour le trait qui apparaît en dessous du texte de chaque élément de navigation au survol */
+nav .nav_item a:not(.nav_item.icon a):before {
     content: "";
     position: absolute;
     bottom: -5px;
@@ -44,12 +50,14 @@ nav .nav_item a:not(.nav_item.icon a):before{
     transition: 300ms ease-in-out;
 }
 
-nav .nav_item a:hover:not(.nav_item.icon a, .dropdown_menu a):before{
+/* Styles pour le trait qui apparaît en dessous du texte de chaque élément de navigation au survol */
+nav .nav_item a:hover:not(.nav_item.icon a, .dropdown_menu a):before {
     transform: scale(100%);
     transition: 300ms ease-in-out;
 }
 
-nav .nav_item .btn_navbar:before{
+/* Styles pour le bouton qui apparaît dans certains éléments de navigation */
+nav .nav_item .btn_navbar:before {
     content: "";
     position: absolute;
     bottom: -5px;
@@ -61,13 +69,15 @@ nav .nav_item .btn_navbar:before{
     transition: 300ms ease-in-out;
 }
 
+/* Styles pour le trait qui apparaît en dessous du bouton de certains éléments de navigation au survol */
 nav .nav_item .btn_navbar:hover:before,
-nav .nav_item .btn_navbar:focus:before{
+nav .nav_item .btn_navbar:focus:before {
     transform: scale(100%);
     transition: 300ms ease-in-out;
 }
 
-nav .nav_item.icon{
+/* Styles pour les éléments de navigation qui contiennent des icônes */
+nav .nav_item.icon {
     position: absolute;
     right: -60px;
     margin: 0;
@@ -76,7 +86,8 @@ nav .nav_item.icon{
     align-items: center;
 }
 
-nav .navbar_nav .nav_item .dropdown_menu{
+/* Styles pour les menus déroulants de la navigation */
+nav .navbar_nav .nav_item .dropdown_menu {
     display: none;
     position: absolute;
     background: var(--couleur-fond);
@@ -85,14 +96,17 @@ nav .navbar_nav .nav_item .dropdown_menu{
     z-index: 1;
 }
 
+/* Styling pour les éléments de menu déroulant de la barre de navigation */
 nav .navbar_nav .nav_item .dropdown_menu.category li{
     margin: 7px;
 }
 
+/* Affichage des éléments de menu déroulant actifs */
 nav .navbar_nav .nav_item .dropdown_menu.active{
     display: block;
 }
 
+/* Styling pour le menu déroulant de la catégorie */
 .dropdown_menu.category{
     margin-left: 7px;
     top: 50px;
@@ -100,6 +114,7 @@ nav .navbar_nav .nav_item .dropdown_menu.active{
     padding: 10px;
 }
 
+/* Flèche vers le haut pour le menu déroulant de la catégorie */
 .dropdown_menu.category:after{
     content: "▲";
     color: var(--couleur-texte-secondaire);
@@ -108,6 +123,7 @@ nav .navbar_nav .nav_item .dropdown_menu.active{
     z-index: -1;
 }
 
+/* Styling pour le menu déroulant du profil */
 .dropdown_menu.profile{
     right: 29px;
     top: 40px;
@@ -115,6 +131,7 @@ nav .navbar_nav .nav_item .dropdown_menu.active{
     padding: 5px;
 }
 
+/* Styling pour le menu déroulant de déconnexion */
 .dropdown_menu.logout{
     right: -4px;
     top: 40px;
@@ -122,6 +139,7 @@ nav .navbar_nav .nav_item .dropdown_menu.active{
     padding: 5px;
 }
 
+/* Flèche vers le haut pour le menu déroulant de déconnexion */
 .dropdown_menu.logout:after{
     content: "▲";
     color: var(--couleur-texte-secondaire);
@@ -130,7 +148,7 @@ nav .navbar_nav .nav_item .dropdown_menu.active{
     left: 150px;
 }
 
-
+/* Flèche vers le haut pour le menu déroulant du profil */
 .dropdown_menu.profile:after{
     content: "▲";
     color: var(--couleur-texte-secondaire);
@@ -139,21 +157,21 @@ nav .navbar_nav .nav_item .dropdown_menu.active{
     left: 120px;
 }
 
+/* Styling pour le bouton de profil */
 .btn_profile{
     display: flex;
     gap: 5px;
     align-items: center;
 }
 
-
-
-/*BUTTON MOBIL*/
+/* Bouton pour l'affichage du menu sur les appareils mobiles */
 .btn_mobil{
     display: none;
 }
 
+/* Media query pour l'affichage du bouton de menu sur les appareils mobiles */
 @media (max-width: 1000px) {
-    /*BUTTON MOBIL*/
+    /* Styling pour le bouton de menu mobile */
     .btn_mobil.mobil_icon{
         position: absolute;
         right: -60px;
@@ -161,14 +179,17 @@ nav .navbar_nav .nav_item .dropdown_menu.active{
         font-size: 25px;
     }
 
+    /* Icône "X" pour le bouton de menu mobile */
     i.fa-xmark{
         display: none;
     }
 
+    /* Affichage du bouton de menu mobile */
     .btn_mobil{
         display: block;
     }
 
+    /* Masquer les éléments de menu déroulant sur les appareils mobiles */
     nav .nav_item{
         display: none;
     }

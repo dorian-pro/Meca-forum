@@ -18,31 +18,46 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAthenticatorAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
+        // Crée un nouvel objet User
         $user = new User();
+        // Crée un formulaire avec UserType et l'objet User
         $form = $this->createForm(UserType::class, $user);
+        // Gère la requête du formulaire
         $form->handleRequest($request);
 
+        // Vérifie si le formulaire a été soumis et est valide
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            // encodage du mot de passe
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
+                    // Récupère le mot de passe soumis et le hashe
                     $form->get('password')->getData()
                 )
             )
-            ->setAddress($user->getAddress())
-            ->setUserInfo($user->getUserInfo())
-            ->setEmail($form->get('email')->getData())
-            ->setRoles(['ROLE_USER'])
-            ->setIsVerified(false)
-            ->setIsActive(true)
-            ->setIsAgree(true)
-            ->setCreatedAt(new \DateTime('now'));
+                // Définit l'adresse de l'utilisateur
+                ->setAddress($user->getAddress())
+                // Définit les informations de l'utilisateur
+                ->setUserInfo($user->getUserInfo())
+                // Récupère l'adresse email soumise
+                ->setEmail($form->get('email')->getData())
+                // Définit les rôles de l'utilisateur
+                ->setRoles(['ROLE_USER'])
+                // Définit si l'utilisateur est vérifié
+                ->setIsVerified(false)
+                // Définit si l'utilisateur est actif
+                ->setIsActive(true)
+                // Définit si l'utilisateur à accepter les conditions générales
+                ->setIsAgree(true)
+                // Définit la date de création de l'utilisateur
+                ->setCreatedAt(new \DateTime('now'));
 
+            // Ajoute l'utilisateur à la base de données
             $entityManager->persist($user);
+            // Sauvegarde les modifications dans la base de données
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
+            // Authentifie l'utilisateur
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
@@ -51,6 +66,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
+            // Crée la vue du formulaire
             'form' => $form->createView(),
         ]);
     }

@@ -3,17 +3,20 @@
 {% block title %}Méca-forum - Touts les postes{% endblock %}
 
 {% block body %}
-<div class="container_post">
-    <section class="container_sidebar">
-        <h1>sidebar</h1>
-    </section>
-    <section class="contaiter_card_post">
-        <ul class="card_group">
-            {% for post in posts %}
-                <li>
-                    <div class="card_post">
-                        <div class="card_header">
 
+    <div class="container_post">
+        <!-- Section sidebar -->
+        <section class="container_sidebar">
+            <h1>sidebar</h1>
+        </section>
+        <section class="contaiter_card_post">
+            <ul class="card_group">
+                <!-- Boucler sur tous les posts -->
+                {% for post in posts %}
+                    <li>
+                        <div class="card_post">
+                            <div class="card_header">
+                                <!-- Si l'utilisateur a une photo de profil, l'afficher -->
                                 {% if post.userPost.profilePicture is not null %}
                                     {% for image in images %}
                                         {% if image.id == post.userPost.profilePicture.id %}
@@ -23,59 +26,64 @@
                                             </div>
                                         {% endif %}
                                     {% endfor %}
+                                    <!-- Si l'utilisateur n'a pas de photo de profil, afficher une icône par défaut -->
                                 {% else %}
                                     <i class="fa-solid fa-user"></i> {{ post.userPost.userInfo.pseudo  }}
                                 {% endif %}
-
-                        </div>
-                        <div class="card_body">
-                            {% if post.image|length > 1 %}
-                                <ul class="slice">
-                                    {% for image in post.image %}
-                                        <li>
+                            </div>
+                            <div class="card_body">
+                                <!-- Si le message contient plusieurs images, les afficher dans une grille -->
+                                {% if post.image|length > 1 %}
+                                    <ul class="slice">
+                                        {% for image in post.image %}
+                                            <li>
+                                                <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <!-- Si le message ne contient qu'une seule image, l'afficher comme une image unique -->
+                                {% else %}
+                                    <div class="img">
+                                        {% for image in post.image %}
                                             <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            {% else %}
-                                <div class="img">
-                                    {% for image in post.image %}
-                                        <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="card_footer">
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="card_footer">
+                                <!-- Afficher le titre du post -->
                             <span class="h3">
                                 {{ post.title }}
                             </span>
-                            <p class="description">
-                                {{ post.description }}
-                            </p>
-                            <div class="comment">
-                                {{ form_start(form) }}
-
-                                <div>
-                                    {{ form_label(form.comment) }}
-                                    {{ form_widget(form.comment) }}
+                                <!-- Afficher la description du post -->
+                                <p class="description">
+                                    {{ post.description }}
+                                </p>
+                                <!-- Début du formulaire pour ajouter un commentaire -->
+                                <div class="comment">
+                                    {{ form_start(form) }}
+                                    <!-- Afficher le champ d'entrée pour le commentaire -->
+                                    <div>
+                                        {{ form_label(form.comment) }}
+                                        {{ form_widget(form.comment) }}
+                                    </div>
+                                    <!-- Afficher toutes les erreurs avec le champ d'entrée du commentaire -->
+                                    <div class="form-error">
+                                        {{ form_errors(form.comment) }}
+                                    </div>
+                                    <!-- Fin du formulaire pour ajouter un commentaire -->
+                                    {{ form_end(form) }}
                                 </div>
-                                <div class="form-error">
-                                    {{ form_errors(form.comment) }}
-                                </div>
-
-                                {{ form_end(form) }}
                             </div>
                         </div>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <section class="container_aside">
-        <h1>aside</h1>
-    </section>
-</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
 
-
-
+        <!--------------- Section aside -------------->
+        <section class="container_aside">
+            <h1>aside</h1>
+        </section>
+    </div>
 {% endblock %}

@@ -18,6 +18,7 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Ajout des champs pour le formulaire d'inscription
         $builder
             ->add('email', EmailType::class)
             ->add('password', RepeatedType::class, [
@@ -35,6 +36,7 @@ class UserType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
+        // Configuration du formulaire
         $resolver->setDefaults([
             'data_class' => User::class,
         ]);
