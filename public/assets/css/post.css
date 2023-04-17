@@ -4,6 +4,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 95px;
 }
 
 /* Entête de la carte */
@@ -24,12 +25,15 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .container_card_post .card_body img {
     min-width: 100%;
     min-height: 100%;
     border-radius: 5px;
+
 }
 
 .container_card_post .card_body .slice,
@@ -38,16 +42,21 @@
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    max-width: 100%;
+    min-width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.container_card_post .card_body .slice{
+    width: 480px;
+    height: 500px;
 }
 
 .container_card_post .card_body .slice li {
     display: flex;
     flex-wrap: nowrap;
     max-width: 100%;
-    height: 380px;
+    height: 500px;
 }
 
 /* Carte du groupe */
@@ -71,14 +80,17 @@
 /* Carte du message */
 .container_card_post .card_group .card_post {
     max-width: 830px;
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* Bouton tronçonneuse */
+.container_card_post .card_group .card_post:not(.container_card_post .card_group .card_post:nth-child(1)) {
+    margin-top: 10px;
+}
+
+/* Bouton slice */
 .slice button {
     color: #0c0a0e;
     width: 40px;
@@ -88,16 +100,28 @@
 
 /* Slider */
 .slick-list {
+    position: relative;
     width: 100%;
-    height: 100%;
 }
 
 .slick-next.slick-arrow {
     margin-right: 25px;
+
 }
 
 .slick-prev.slick-arrow {
     margin-left: 25px;
+
+}
+
+.slick-next.slick-arrow::before{
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.slick-prev.slick-arrow::before{
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
 }
 
 .slick-next.slick-arrow::before,

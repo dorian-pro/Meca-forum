@@ -9,10 +9,13 @@
         <section class="container_sidebar">
             <h1>sidebar</h1>
         </section>
-        <section class="contaiter_card_post">
+        <section class="container_card_post">
             <ul class="card_group">
+                {{ form_start(form) }}
+                {% set comment_field_input = form_row(form.comment, {'attr': {'class': 'form-control'}}) %}
                 <!-- Boucler sur tous les posts -->
                 {% for post in posts %}
+
                     <li>
                         <div class="card_post">
                             <div class="card_header">
@@ -31,25 +34,30 @@
                                     <i class="fa-solid fa-user"></i> {{ post.userPost.userInfo.pseudo  }}
                                 {% endif %}
                             </div>
-                            <div class="card_body">
-                                <!-- Si le message contient plusieurs images, les afficher dans une grille -->
+
                                 {% if post.image|length > 1 %}
-                                    <ul class="slice">
-                                        {% for image in post.image %}
-                                            <li>
-                                                <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                    <!-- Si le message ne contient qu'une seule image, l'afficher comme une image unique -->
-                                {% else %}
-                                    <div class="img">
-                                        {% for image in post.image %}
-                                            <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
-                                        {% endfor %}
+                                    <div class="card_body">
+                                        <!-- Si le message contient plusieurs images, les afficher dans une grille -->
+                                        <ul class="slice">
+                                            {% for image in post.image %}
+                                                <li>
+                                                    <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
                                     </div>
+                                {% elseif post.image|length == 1 %}
+                                    <div class="card_body">
+                                        <!-- Si le message ne contient qu'une seule image, l'afficher comme une image unique -->
+                                        <div class="img">
+                                            {% for image in post.image %}
+                                                <img src="/assets/images/upload_post/{{ image.imagePost }}" alt="photo de profile de {{ post.userPost.userInfo.pseudo }}">
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% else %}
                                 {% endif %}
-                            </div>
+
                             <div class="card_footer">
                                 <!-- Afficher le titre du post -->
                             <span class="h3">
@@ -61,23 +69,18 @@
                                 </p>
                                 <!-- Début du formulaire pour ajouter un commentaire -->
                                 <div class="comment">
-                                    {{ form_start(form) }}
+
                                     <!-- Afficher le champ d'entrée pour le commentaire -->
                                     <div>
-                                        {{ form_label(form.comment) }}
-                                        {{ form_widget(form.comment) }}
-                                    </div>
-                                    <!-- Afficher toutes les erreurs avec le champ d'entrée du commentaire -->
-                                    <div class="form-error">
-                                        {{ form_errors(form.comment) }}
+                                        {{ comment_field_input|raw }}
                                     </div>
                                     <!-- Fin du formulaire pour ajouter un commentaire -->
-                                    {{ form_end(form) }}
                                 </div>
                             </div>
                         </div>
                     </li>
                 {% endfor %}
+                {{ form_end(form) }}
             </ul>
         </section>
 

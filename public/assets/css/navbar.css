@@ -5,6 +5,12 @@ nav {
     padding-left: 12px;
     padding-right: 12px;
     box-shadow: 0 1px 10px rgba(33, 33, 33, 0.47);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--couleur-fond);
+    z-index: 1000;
 }
 
 /* Styles pour le logo de la barre de navigation */
